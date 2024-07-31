@@ -1,32 +1,32 @@
 steps:
-  # Step 1: Install Python, Git, curl, and Poetry
-  - id: "Install dependencies"
+  # Step 1: Install Git and curl
+  - id: "Install Git and curl"
     name: "python:3.11-slim" # Use the appropriate Python version
     entrypoint: sh
     args:
       - "-c"
       - |
         apt-get update && apt-get install -y git curl
+
+  # Step 2: Install Poetry
+  - id: "Install Poetry"
+    name: "python:3.11-slim" # Use the appropriate Python version
+    entrypoint: sh
+    args:
+      - "-c"
+      - |
         pip install --upgrade pip
         curl -sSL https://install.python-poetry.org | python3 -
 
-  # Step 2: Verify Poetry and Git installation
+  # Step 3: Verify Poetry and Git installation
   - id: "Verify Poetry and Git"
     name: "python:3.11-slim"
     entrypoint: sh
     args:
       - "-c"
       - |
+        export PATH="/builder/home/.local/bin:$PATH"
         /builder/home/.local/bin/poetry --version
         git --version
-
-  # Step 3: Install project dependencies using Poetry
-  - id: "Poetry Install"
-    name: "python:3.11-slim"
-    entrypoint: sh
-    args:
-      - "-c"
-      - |
-        /builder/home/.local/bin/poetry install
 
 timeout: '1200s'
