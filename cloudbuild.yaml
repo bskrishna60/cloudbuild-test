@@ -17,8 +17,7 @@ steps:
     args:
       - "-c"
       - |
-        export PATH="/root/.local/bin:$PATH"
-        poetry --version
+        /root/.local/bin/poetry --version
         git --version
 
   # Step 3: Install project dependencies using Poetry
@@ -28,7 +27,6 @@ steps:
     args:
       - "-c"
       - |
-        export PATH="/root/.local/bin:$PATH"
-        poetry install
+        /root/.local/bin/poetry install
 
 timeout: '1200s'
