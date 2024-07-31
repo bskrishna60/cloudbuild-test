@@ -9,7 +9,6 @@ steps:
         apt-get update && apt-get install -y git curl
         pip install --upgrade pip
         curl -sSL https://install.python-poetry.org | python3 -
-        export PATH="/builder/home/.local/bin:$PATH"
 
   # Step 2: Verify Poetry installation
   - id: "Verify Poetry"
@@ -18,7 +17,7 @@ steps:
     args:
       - "-c"
       - |
-        export PATH="/builder/home/.local/bin:$PATH"
+        export PATH="/root/.local/bin:$PATH"
         poetry --version
         git --version
 
@@ -29,7 +28,7 @@ steps:
     args:
       - "-c"
       - |
-        export PATH="/builder/home/.local/bin:$PATH"
+        export PATH="/root/.local/bin:$PATH"
         poetry install
 
 timeout: '1200s'
