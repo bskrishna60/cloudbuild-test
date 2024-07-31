@@ -10,14 +10,15 @@ steps:
         pip install --upgrade pip
         curl -sSL https://install.python-poetry.org | python3 -
 
-  # Step 2: Verify Poetry installation
-  - id: "Verify Poetry"
+  # Step 2: Verify Poetry and Git installation
+  - id: "Verify Poetry and Git"
     name: "python:3.11-slim"
     entrypoint: sh
     args:
       - "-c"
       - |
-        /builder/home/.local/bin/poetry --version
+        export PATH="/builder/home/.local/bin:$PATH"
+        poetry --version
         git --version
 
   # Step 3: Install project dependencies using Poetry
@@ -27,6 +28,7 @@ steps:
     args:
       - "-c"
       - |
-        /builder/home/.local/bin/poetry install
+        export PATH="/builder/home/.local/bin:$PATH"
+        poetry install
 
 timeout: '1200s'
