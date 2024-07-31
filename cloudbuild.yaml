@@ -9,7 +9,6 @@ steps:
         apt-get update && apt-get install -y git curl && \
         pip install --upgrade pip && \
         curl -sSL https://install.python-poetry.org | python3 - && \
-        export PATH="/builder/home/.local/bin:$PATH" && \
         /builder/home/.local/bin/poetry --version && \
         git --version
 
