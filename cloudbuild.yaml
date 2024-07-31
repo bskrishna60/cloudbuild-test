@@ -25,7 +25,6 @@ steps:
     args:
       - "-c"
       - |
-        export PATH="/builder/home/.local/bin:$PATH"
         /builder/home/.local/bin/poetry --version
         git --version
 
