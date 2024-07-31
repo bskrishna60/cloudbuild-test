@@ -17,6 +17,7 @@ steps:
       - |
         pip install --upgrade pip
         curl -sSL https://install.python-poetry.org | python3 -
+        /builder/home/.local/bin/poetry --version
 
   # Step 3: Verify Poetry and Git installation
   - id: "Verify Poetry and Git"
@@ -25,6 +26,9 @@ steps:
     args:
       - "-c"
       - |
+        apt-get update && apt-get install -y git curl
+        pip install --upgrade pip
+        curl -sSL https://install.python-poetry.org | python3 -
         /builder/home/.local/bin/poetry --version
         git --version
 
