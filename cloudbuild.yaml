@@ -1,0 +1,32 @@
+steps:
+  # Step 1: Install Python, Git, and Poetry
+  - id: "Install dependencies"
+    name: "python:3.11-slim" # Use the appropriate Python version
+    entrypoint: sh
+    args:
+      - "-c"
+      - |
+        apt-get update && apt-get install -y git
+        pip install --upgrade pip
+        curl -sSL https://install.python-poetry.org | python3 -
+
+  # Step 2: Verify Poetry installation
+  - id: "Verify Poetry"
+    name: "python:3.11-slim"
+    entrypoint: sh
+    args:
+      - "-c"
+      - |
+        poetry --version
+        git --version
+
+  # Step 3: Install project dependencies using Poetry
+  - id: "Poetry Install"
+    name: "python:3.11-slim"
+    entrypoint: sh
+    args:
+      - "-c"
+      - |
+        poetry install
+
+timeout: '1200s'
