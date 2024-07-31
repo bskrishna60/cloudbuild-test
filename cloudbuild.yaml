@@ -6,7 +6,7 @@ steps:
     args:
       - "-c"
       - |
-        apt-get update && apt-get install -y git
+        apt-get update && apt-get install -y git curl
         pip install --upgrade pip
         curl -sSL https://install.python-poetry.org | python3 -
 
