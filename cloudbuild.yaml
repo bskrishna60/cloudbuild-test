@@ -11,6 +11,6 @@ steps:
         curl -sSL https://install.python-poetry.org | python3 - && \
         /builder/home/.local/bin/poetry --version && \
         git --version && \
-        /builder/home/.local/bin/poetry install
+        /builder/home/.local/bin/poetry install     
 
 timeout: '1200s'
