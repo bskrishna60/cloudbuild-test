@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Variables
-TAG_NAME="v2.0.0"
+TAG_NAME="v2.0.1"
 RELEASE_TITLE="Release $TAG_NAME"
 RELEASE_NOTES="Release notes for version $TAG_NAME"
 
