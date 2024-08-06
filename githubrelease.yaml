@@ -1,29 +1,33 @@
-
-
 steps:
-# Step 2: Fetch the GitHub token from Secret Manager and create a GitHub release
-  - name: 'gcr.io/cloud-builders/git'
+  # Step 1: Use an Ubuntu image and install necessary packages including GitHub CLI
+  - name: 'ubuntu'
     entrypoint: 'bash'
-    secretEnv: ['git_token']
+    secretEnv: ['GITHUB_TOKEN']
     args:
       - '-c'
       - |
-        apt-get update && apt-get install -y gh
-        echo $git_token
-        gh auth login --with-token
+        apt-get update && \
+        apt-get install -y curl git gnupg2 && \
+        curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg && \
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null && \
+        apt-get update && \
+        apt-get install -y gh && \
+        gh --version
+
+        echo $GITHUB_TOKEN | gh auth login --with-token
 
         # Create a new GitHub release
         gh release create v1.0.0 --title 'Initial_release' --notes 'Initial_release'
 
 # substitutions:
-# _TAG_NAME: 'v1.0.0'
-# _RELEASE_TITLE: 'Initial Release'
-# _RELEASE_NOTES: 'Release notes for the initial release.'
+#   TAG_NAME: 'v1.0.0'
+#   RELEASE_TITLE: 'Initial Release'
+#   RELEASE_NOTES: 'Release notes for the initial release.'
 
 availableSecrets:
   secretManager:
-  - versionName: projects/sai-sandbox-20240119/secrets/github_token/versions/1
-    env: 'git_token'
+    - versionName: projects/sai-sandbox-20240119/secrets/github_token/versions/1
+      env: 'GITHUB_TOKEN'
 
-options: 
+options:
   logging: CLOUD_LOGGING_ONLY
