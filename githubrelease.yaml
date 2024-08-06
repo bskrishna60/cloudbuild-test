@@ -17,8 +17,25 @@ steps:
         # Authenticate using the personal access token
         echo $git_token | gh auth login --with-token
 
+        # Use the provided tag name and other environment variables
+        TAG_NAME=${TAG_NAME}
+        RELEASE_TITLE=${RELEASE_TITLE}
+        RELEASE_NOTES=${RELEASE_NOTES}
+
+        echo "Using tag: $TAG_NAME"
+        echo "Release title: $RELEASE_TITLE"
+        echo "Release notes: $RELEASE_NOTES"
+
         # Create a new GitHub release
-        gh release create v3.0.1 --title 'Initial_release' --notes 'Initial_release'
+        gh release create $TAG_NAME --title "$RELEASE_TITLE" --notes "$RELEASE_NOTES"
+
+        echo "Release $TAG_NAME created successfully!"
+  
+substitutions:
+  TAG_NAME: 'v4.0.0'
+  RELEASE_TITLE: 'Initial Release'
+  RELEASE_NOTES: 'Release notes for the initial release.'        
+
 
 availableSecrets:
   secretManager:
