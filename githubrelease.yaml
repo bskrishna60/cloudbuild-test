@@ -4,12 +4,12 @@ steps:
 # Step 2: Fetch the GitHub token from Secret Manager and create a GitHub release
   - name: 'gcr.io/cloud-builders/git'
     entrypoint: 'bash'
-    secretEnv: ['GITHUB_TOKEN']
+    secretEnv: ['git_token']
     args:
       - '-c'
       - |
-        echo $GITHUB_TOKEN 
-        echo $GITHUB_TOKEN | gh auth login --with-token
+        echo $git_token
+        echo $git_token | gh auth login --with-token
 
         # Use the provided tag name and other environment variables
         TAG_NAME='v1.0.0'
@@ -33,5 +33,5 @@ steps:
 availableSecrets:
   secretManager:
   - versionName: projects/164582665487/secrets/github_token/versions/1
-    env: 'GITHUB_TOKEN'
+    env: 'git_token'
 
