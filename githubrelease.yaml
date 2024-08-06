@@ -21,9 +21,9 @@ steps:
         # echo "Release notes: $RELEASE_NOTES"
 
         # Create a new GitHub release
-        gh release create $TAG_NAME --title "$RELEASE_TITLE" --notes "$RELEASE_NOTES"
+        gh release create $TAG_NAME --title $RELEASE_TITLE --notes $RELEASE_NOTES
 
-        echo "Release $TAG_NAME created successfully!"
+        echo Release $TAG_NAME created successfully!
 
 # substitutions:
 # _TAG_NAME: 'v1.0.0'
