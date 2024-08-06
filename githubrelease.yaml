@@ -13,7 +13,7 @@ steps:
         apt-get update && \
         apt-get install -y gh && \
         gh --version
-
+        export git_token=${git_token}
         # Authenticate using the personal access token
         echo $git_token | gh auth login --with-token
 
