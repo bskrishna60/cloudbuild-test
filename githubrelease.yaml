@@ -1,22 +1,14 @@
-steps:
-  # Step 1: Install the GitHub CLI
-  - name: 'gcr.io/cloud-builders/docker'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        apt-get update && apt-get install -y gh
 
-  # Step 2: Fetch the GitHub token from Secret Manager and create a GitHub release
+
+steps:
+# Step 2: Fetch the GitHub token from Secret Manager and create a GitHub release
   - name: 'gcr.io/cloud-builders/git'
     entrypoint: 'bash'
+    secretEnv: ['GITHUB_TOKEN']
     args:
       - '-c'
       - |
-        # Fetch the GitHub token from Secret Manager
-        GITHUB_TOKEN=$(gcloud secrets versions access latest --secret="github_token" --format="get(payload.data)" | tr '_-' '/+' | base64 -d)
-        
-        # Authenticate with GitHub CLI using the secret directly from environment variable
+        echo $GITHUB_TOKEN 
         echo $GITHUB_TOKEN | gh auth login --with-token
 
         # Use the provided tag name and other environment variables
@@ -34,10 +26,12 @@ steps:
         echo "Release $TAG_NAME created successfully!"
 
 substitutions:
-  _TAG_NAME: 'v1.0.0'
-  _RELEASE_TITLE: 'Initial Release'
-  _RELEASE_NOTES: 'Release notes for the initial release.'
+_TAG_NAME: 'v1.0.0'
+_RELEASE_TITLE: 'Initial Release'
+_RELEASE_NOTES: 'Release notes for the initial release.'
 
-secrets:
-  - secretEnv:
-      GITHUB_TOKEN: github_token
+availableSecrets:
+  secretManager:
+  - versionName: projects/164582665487/secrets/github_token/versions/1
+    env: 'GITHUB_TOKEN'
+
