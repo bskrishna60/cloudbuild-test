@@ -19,13 +19,22 @@ steps:
 
         # Use the provided tag name and other environment variables
         TAG_NAME=${_TAG_NAME}
-        # RELEASE_TITLE='release test'
-        # RELEASE_NOTES=$(_RELEASE_NOTES}
+        RELEASE_TITLE=${_RELEASE_TITLE}
+        RELEASE_NOTES=$(_RELEASE_NOTES}
+
+        echo "Using tag: $TAG_NAME"
+        echo "Release title: $RELEASE_TITLE"
+        echo "Release notes: $RELEASE_NOTES"
 
         # Create a new GitHub release
-        gh release create "$TAG_NAME" --title 'release title test' --notes 'release notes'
+        gh release create "$TAG_NAME" --title "$RELEASE_TITLE" --notes "$RELEASE_NOTES"
 
         echo "Release $TAG_NAME created successfully!"     
+
+substitutions:
+  _TAG_NAME: 'v5.0.0'
+  _RELEASE_TITLE: 'Initial Release'
+  _RELEASE_NOTES: 'Release notes for the initial release.'
 
 availableSecrets:
   secretManager:
