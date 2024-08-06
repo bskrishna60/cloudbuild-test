@@ -22,9 +22,9 @@ steps:
         RELEASE_TITLE=${_RELEASE_TITLE}
         RELEASE_NOTES=$(_RELEASE_NOTES}
 
-        echo "Using tag: $TAG_NAME"
-        echo "Release title: $RELEASE_TITLE"
-        echo "Release notes: $RELEASE_NOTES"
+        # echo "Using tag: $TAG_NAME"
+        # echo "Release title: $RELEASE_TITLE"
+        # echo "Release notes: $RELEASE_NOTES"
 
         # Create a new GitHub release
         gh release create $TAG_NAME --title "$RELEASE_TITLE" --notes "$RELEASE_NOTES"
@@ -33,8 +33,8 @@ steps:
   
 substitutions:
   _TAG_NAME: 'v4.0.0'
-  _RELEASE_TITLE: 'INITIAL_RELEASE'
-  _RELEASE_NOTES: 'RELEASE_NOTES_FOR_THE_INITIAL_RELEASE'        
+  _RELEASE_TITLE: 'Initial Release'
+  _RELEASE_NOTES: 'Release notes for the initial release.'        
 
 
 availableSecrets:
