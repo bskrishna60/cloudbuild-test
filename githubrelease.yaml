@@ -8,8 +8,9 @@ steps:
     args:
       - '-c'
       - |
+        apt-get update && apt-get install -y gh
         echo $git_token
-        echo $git_token | gh auth login --with-token
+        gh auth login --with-token
 
         # Create a new GitHub release
         gh release create v1.0.0 --title 'Initial_release' --notes 'Initial_release'
