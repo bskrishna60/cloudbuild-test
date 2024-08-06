@@ -24,3 +24,5 @@ availableSecrets:
   - versionName: projects/164582665487/secrets/github_token/versions/1
     env: 'git_token'
 
+options: 
+  logging: CLOUD_LOGGING_ONLY
