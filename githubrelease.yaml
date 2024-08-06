@@ -18,9 +18,9 @@ steps:
         echo $git_token | gh auth login --with-token
 
         # Use the provided tag name and other environment variables
-        TAG_NAME=${TAG_NAME}
-        RELEASE_TITLE=${RELEASE_TITLE}
-        RELEASE_NOTES=${RELEASE_NOTES}
+        TAG_NAME=${_TAG_NAME}
+        RELEASE_TITLE=${_RELEASE_TITLE}
+        RELEASE_NOTES=$_RELEASE_NOTES}
 
         echo "Using tag: $TAG_NAME"
         echo "Release title: $RELEASE_TITLE"
