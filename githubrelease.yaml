@@ -20,7 +20,7 @@ steps:
         # Use the provided tag name and other environment variables
         TAG_NAME=${_TAG_NAME}
         RELEASE_TITLE=${_RELEASE_TITLE}
-        RELEASE_NOTES=$_RELEASE_NOTES}
+        RELEASE_NOTES=$(_RELEASE_NOTES}
 
         echo "Using tag: $TAG_NAME"
         echo "Release title: $RELEASE_TITLE"
