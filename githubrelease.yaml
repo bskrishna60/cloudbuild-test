@@ -23,11 +23,6 @@ steps:
 
         echo "Release $_TAG_NAME created successfully!"     
 
-# substitutions:
-#   _TAG_NAME: 'v5.0.1'
-#   _RELEASE_TITLE: 'Initial Release'
-#   _RELEASE_NOTES: 'Release notes for the initial release.'
-
 availableSecrets:
   secretManager:
     - versionName: projects/sai-sandbox-20240119/secrets/github_token/versions/latest
