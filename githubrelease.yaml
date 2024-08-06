@@ -6,7 +6,7 @@ steps:
       - '-c'
       - |
         # Fetch the GitHub token from Secret Manager
-        GITHUB_TOKEN=$(gcloud secrets versions access latest --secret="github_token")
+        GITHUB_TOKEN=$(gcloud secrets versions access latest --secret="github_token" --format="get(payload.data)" | tr '_-' '/+' | base64 -d)
         echo $GITHUB_TOKEN > github_token.txt
 
   # Step 2: Install the GitHub CLI
