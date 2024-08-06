@@ -32,9 +32,9 @@ steps:
         echo "Release $TAG_NAME created successfully!"
   
 substitutions:
-  TAG_NAME: 'v4.0.0'
-  RELEASE_TITLE: 'Initial Release'
-  RELEASE_NOTES: 'Release notes for the initial release.'        
+  _TAG_NAME: 'v4.0.0'
+  _RELEASE_TITLE: 'INITIAL_RELEASE'
+  _RELEASE_NOTES: 'RELEASE_NOTES_FOR_THE_INITIAL_RELEASE'        
 
 
 availableSecrets:
