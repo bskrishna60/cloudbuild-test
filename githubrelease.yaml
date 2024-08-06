@@ -22,7 +22,7 @@ steps:
 
 availableSecrets:
   secretManager:
-    - versionName: projects/YOUR_PROJECT_ID/secrets/github_token/versions/latest
+    - versionName: projects/sai-sandbox-20240119/secrets/github_token/versions/latest
       env: 'git_token'
 
 options:
