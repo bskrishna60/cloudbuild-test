@@ -2,7 +2,7 @@ steps:
   # Step 1: Use an Ubuntu image and install necessary packages including GitHub CLI
   - name: 'ubuntu'
     entrypoint: 'bash'
-    secretEnv: ['GITHUB_TOKEN']
+    secretEnv: ['GIT_TOKEN']
     args:
       - '-c'
       - |
@@ -15,7 +15,7 @@ steps:
         gh --version
 
         # Authenticate using the personal access token
-        echo $GITHUB_TOKEN | gh auth login --with-token
+        echo $GIT_TOKEN | gh auth login --with-token
 
         # Create a new GitHub release
         gh release create v1.0.0 --title 'Initial_release' --notes 'Initial_release'
@@ -23,7 +23,7 @@ steps:
 availableSecrets:
   secretManager:
     - versionName: projects/YOUR_PROJECT_ID/secrets/github_token/versions/latest
-      env: 'GITHUB_TOKEN'
+      env: 'GIT_TOKEN'
 
 options:
   logging: CLOUD_LOGGING_ONLY
