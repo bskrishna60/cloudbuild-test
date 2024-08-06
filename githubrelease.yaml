@@ -18,7 +18,7 @@ steps:
         echo $git_token | gh auth login --with-token
 
         # Create a new GitHub release
-        gh release create v1.0.0 --title 'Initial_release' --notes 'Initial_release'
+        gh release create v3.0.1 --title 'Initial_release' --notes 'Initial_release'
 
 availableSecrets:
   secretManager:
