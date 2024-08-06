@@ -21,7 +21,7 @@ steps:
 
 availableSecrets:
   secretManager:
-  - versionName: projects/164582665487/secrets/github_token/versions/1
+  - versionName: projects/sai-sandbox-20240119/secrets/github_token/versions/1
     env: 'git_token'
 
 options: 
