@@ -14,18 +14,14 @@ steps:
         apt-get install -y gh && \
         gh --version
         export git_token=${git_token}
+
         # Authenticate using the personal access token
         echo $git_token | gh auth login --with-token
 
-        # Use the provided tag name and other environment variables
-        TAG_NAME=${_TAG_NAME}
-        RELEASE_TITLE=${_RELEASE_TITLE}
-        RELEASE_NOTES=$(_RELEASE_NOTES}
-
         # Create a new GitHub release
-        gh release create ${_TAG_NAME} --title ${_RELEASE_TITLE} --notes ${_RELEASE_NOTES}
+        gh release create $_TAG_NAME --title $_RELEASE_TITLE --notes $_RELEASE_NOTES
 
-        echo "Release ${_TAG_NAME} created successfully!"     
+        echo "Release $_TAG_NAME created successfully!"     
 
 substitutions:
   _TAG_NAME: 'v5.0.0'
