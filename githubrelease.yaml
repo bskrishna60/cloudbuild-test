@@ -19,12 +19,12 @@ steps:
         echo $git_token | gh auth login --with-token
 
         # Create a new GitHub release
-        gh release create $_TAG_NAME --title $_RELEASE_TITLE --notes $_RELEASE_NOTES
+        gh release create "${_TAG_NAME}" --title "${_RELEASE_TITLE}" --notes "${_RELEASE_NOTES}"
 
         echo "Release $_TAG_NAME created successfully!"     
 
 substitutions:
-  _TAG_NAME: 'v5.0.0'
+  _TAG_NAME: 'v5.0.1'
   _RELEASE_TITLE: 'Initial Release'
   _RELEASE_NOTES: 'Release notes for the initial release.'
 
