@@ -12,23 +12,23 @@ steps:
         echo $GITHUB_TOKEN | gh auth login --with-token
 
         # Use the provided tag name and other environment variables
-        TAG_NAME=$TAG_NAME
-        RELEASE_TITLE=$RELEASE_TITLE
-        RELEASE_NOTES=$RELEASE_NOTES
+        TAG_NAME='v1.0.0'
+        RELEASE_TITLE='initial release'
+        RELEASE_NOTES='initial release'
 
-        echo "Using tag: $TAG_NAME"
-        echo "Release title: $RELEASE_TITLE"
-        echo "Release notes: $RELEASE_NOTES"
+        # echo "Using tag: $TAG_NAME"
+        # echo "Release title: $RELEASE_TITLE"
+        # echo "Release notes: $RELEASE_NOTES"
 
         # Create a new GitHub release
         gh release create $TAG_NAME --title "$RELEASE_TITLE" --notes "$RELEASE_NOTES"
 
         echo "Release $TAG_NAME created successfully!"
 
-substitutions:
-_TAG_NAME: 'v1.0.0'
-_RELEASE_TITLE: 'Initial Release'
-_RELEASE_NOTES: 'Release notes for the initial release.'
+# substitutions:
+# _TAG_NAME: 'v1.0.0'
+# _RELEASE_TITLE: 'Initial Release'
+# _RELEASE_NOTES: 'Release notes for the initial release.'
 
 availableSecrets:
   secretManager:
